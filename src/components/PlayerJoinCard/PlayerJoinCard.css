@@ -1,0 +1,33 @@
+.playerJoinCard{
+    background: rgba(0, 0, 0, 0.2);
+    height: 30rem;
+    width: 20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0.5rem dashed #eee;
+    border-radius: 0.5rem;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.playerJoinCard p{
+    font-size: 150%;
+    color: #eee;
+}
+
+.playerJoinCard__button{
+    color: #eee;
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+    font-family: sans-serif;
+    font-size: 200%;
+    background: linear-gradient(to bottom right,#F0FF42, 20% , #379237);
+    border: none;
+    transition: 60s all;
+}
+
+.playerJoinCard__button:hover{
+    filter: hue-rotate(3600deg);
+}

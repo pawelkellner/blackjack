@@ -1,0 +1,68 @@
+.playerData{
+    position: absolute;
+    width: 25rem;
+    height: 15rem;
+    bottom: 2rem;
+    left: 2rem;
+}
+
+.underline{
+    border-bottom: 0.1rem solid rgba(238, 238, 238, 0.5);
+}
+
+.player{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background:rgba(0, 0, 0, 0.2);
+    border-radius: 1rem;
+    color: #eee;
+}
+
+.player i {
+    padding-right: 0.5rem;
+}
+
+.playerName{
+    font-size: 300%;
+}
+
+.playerName__wrapper{
+    width: 80%;
+    height: 33%;
+    display: flex;
+    align-items: flex-end;
+}
+
+.coinStack{
+    font-size: 2rem;
+}
+
+.playerIngameMoney{
+    font-size: 250%;
+}
+
+.playerIngameMoney__wrapper{
+    width: 80%;
+    height: 33%;
+    display: flex;
+    align-items: center;
+}
+
+.bankMoney{
+    font-size: 2rem;
+}
+
+.bank{
+    font-size: 200%;
+}
+
+.bank__wrapper{
+    width: 80%;
+    height: 33%;
+    display: flex;
+    align-items: center;
+}

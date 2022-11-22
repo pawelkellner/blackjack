@@ -1,0 +1,45 @@
+.playerCard{
+    height: 30rem;
+    width: 20rem;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 0.5rem;
+}
+
+.playerCardName__wrapper{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: flex-end;
+    width: 100%;
+    height: 40%;
+}
+
+.playerCardName__h1{
+    width: 80%;
+    font-size: 150%;
+    color: #eee;
+    border-bottom: solid 0.1rem #eee; 
+    padding-bottom: 5.5rem;
+}
+
+.playerStats__wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 60%;
+}
+
+.playerCards__wrapper{
+    display: flex;
+    gap: 1rem;
+    font-size: 200%;
+    color: #eee;
+    height: 60%;
+}
+
+.card1{
+    width: 100%;
+    height: 100%;
+    font-size: 400%;
+}

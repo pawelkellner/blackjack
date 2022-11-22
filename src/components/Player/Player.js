@@ -5,7 +5,7 @@ const Player = ({playerName}) =>{
         <section className="playerData">
                 <section className="player">
                     <div className="playerName__wrapper underline">
-                        <h3 className="playerName">Pawel</h3>
+                        <h3 className="playerName">{playerName}</h3>
                     </div>
                     <div className="playerIngameMoney__wrapper underline">
                         <i className="fa-solid fa-coins coinStack"></i>

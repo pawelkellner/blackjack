@@ -29,7 +29,7 @@
 }
 
 .playerCreate_input{
-    color: #eee;
+    color: black;
     font-size: 250%;
     list-style: none;
     border: 0.1rem solid rgba(0, 0, 0, 0.1);
@@ -57,5 +57,5 @@
     border-radius: 3rem;
     border-style: none;
     background: linear-gradient(to bottom right,#F0FF42,20%,#379237);
-    box-shadow: 0rem 0rem 1rem 0.2rem rgba(0, 0, 0,0.2);
+    box-shadow: 0rem 0rem 1rem 0.2rem rgba(0, 0, 0, 0.2);
 }

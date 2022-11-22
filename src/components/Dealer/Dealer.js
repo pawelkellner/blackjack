@@ -8,8 +8,8 @@ const Dealer = () =>{
                     </div>
                     <div className="dealerStats__wrapper">
                         <div className="cards__wrapper">
-                            <p className="card1">Card 1: 1</p>
-                            <p className="card2">Card 2: ?</p>
+                            <p className="cards">Card 1: 1</p>
+                            <p className="cards">Card 2: ?</p>
                         </div>
                     </div>
         </article>

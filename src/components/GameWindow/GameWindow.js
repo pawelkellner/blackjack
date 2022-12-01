@@ -1,4 +1,3 @@
-import React from "react"
 import "./GameWindow.css"
 import Deck from "../../data/Deck/Deck"
 import Dealer from "../Dealer/Dealer"
@@ -6,31 +5,30 @@ import Player from "../Player/Player"
 import PlayerJoinCard from "../PlayerJoinCard/PlayerJoinCard"
 import PlayerCreate from "../PlayerCreate/PlayerCreate"
 import PlayerCard from "../PlayerCard/PlayerCard"
+import { useEffect, useState } from "react"
 
-class GameWindow extends React.Component{
-    constructor(props){
-        super(props)
-        this.state = ({
-            playerCreateWindow: false,
-            playerName: "",
-            gameStarted: false,
-            playerCreated: false,
-            playerCards: [],
-            dealerCards: [],
-            usedCards: [],
-            generatedCard: []
-        })
-    }
+const GameWindow = (props) => {
+    const [playerCreateWindow, setPlayerCreateWindow] = useState(false);
+    const [playerName, setPlayerName] = useState("");
+    const [gameStarted, setGameStarted] = useState(false);
+    const [playerCreated, setPlayerCreated] = useState(false);
+    const [playerCards, setPlayerCards] = useState([]);
+    const [dealerCards, setDealerCards] = useState([])
+    const [usedCards, setUsedCards] = useState([]);
+    const [generatedCard, setGeneratedCard] = useState([]);
 
-    startCardGenerator = () =>{
+    
+
+    const startCardGenerator = () => {
         while (true){
-            if(this.state.usedCards.length < 2){
+            console.log(usedCards)
+            if (usedCards.length < 2) {
                 let randomNum = Math.floor(Math.random() * (53 - 1) + 1)
                 let chooseCard = Deck.find(card => {
                     return card.number === randomNum;
                 })
-                if(!this.state.usedCards.some((used) => used.number === randomNum)){
-                    let playerGeneratedCard = 
+                if (!usedCards.some((used) => used.number === randomNum)) {
+                    let playerGeneratedCard =
                         [
                             {
                                 number: chooseCard.number,
@@ -39,72 +37,71 @@ class GameWindow extends React.Component{
                                 card: chooseCard.card
                             }
                         ];
-                    
-                    this.setState((state) => {
-                        return {playerCards: state.playerCards.concat(playerGeneratedCard),
-                                usedCards: state.usedCards.concat(playerGeneratedCard)}
-                        }, () => {console.log(this.state.usedCards.length)})
-                }         
+
+                    setPlayerCards(playerCards.concat(playerGeneratedCard));
+                    console.log("benjito")
+                }
             }else{
-                break;
+            break;
             }
         }
     }
+    
+    useEffect(() =>{
+        console.log(playerCards)
+        setUsedCards(usedCards.concat(playerCards));
+        console.log(usedCards)
+    }, [playerCards])
 
-    randomCardGenerator = () =>{
-        
+    const randomCardGenerator = () => {
+
     }
 
-    joinCardButtonClicked = () =>{
-        this.setState({playerCreateWindow: !this.state.playerCreateWindow})
+    const joinCardButtonClicked = () => {
+        setPlayerCreateWindow(!playerCreateWindow)
     }
 
-    playerCreate = (inputFromPlayerCreate) =>{
-        this.setState({
-            playerCreateWindow: !this.state.playerCreateWindow,
-            playerName: inputFromPlayerCreate,
-            playerCreated: true
-        })
-        
+    const playerCreate = (inputFromPlayerCreate) => {
+        setPlayerCreateWindow(!playerCreateWindow);
+        setPlayerName(inputFromPlayerCreate);
+        setPlayerCreated(true);
     }
 
-    startGame = () =>{
-            this.startCardGenerator();
-            this.setState({gameStarted: true})
+    const startGame = () => {
+        startCardGenerator();
+        setGameStarted(true);
     }
 
-    render(){
-        if(this.state.playerCreateWindow === true){
-            return(
-                <article className="gameWindow">
-                    <PlayerCreate 
-                    playerCreate={this.playerCreate}
-                    />
-                </article>
-            )
-        }
-        if(this.state.playerCreated === true){
-            return(
-                <article className="gameWindow">
-                    <Dealer />
-                    <PlayerCard
-                    playerName={this.state.playerName}
-                    playerCards={this.state.playerCards}
-                    gameStarted={this.state.gameStarted}
-                    startGame={this.startGame}
-                    />
-                    <Player 
-                    playerName={this.state.playerName}
-                    />
-
-                </article>
-            )
-        }
-        return(
+    if (playerCreateWindow){
+        return (
+            <article className="gameWindow">
+                <PlayerCreate
+                    playerCreate={playerCreate}
+                />
+            </article>
+        )
+    }if (playerCreated) {
+        return (
             <article className="gameWindow">
                 <Dealer />
-                <PlayerJoinCard 
-                joinCardButtonClicked={this.joinCardButtonClicked}
+                <PlayerCard
+                    playerName={playerName}
+                    playerCards={playerCards}
+                    gameStarted={gameStarted}
+                    startGame={startGame}
+                />
+                <Player
+                    playerName={playerName}
+                />
+
+            </article>
+        )
+    }else{
+        return (
+            <article className="gameWindow">
+                <Dealer />
+                <PlayerJoinCard
+                    joinCardButtonClicked={joinCardButtonClicked}
                 />
             </article>
         )

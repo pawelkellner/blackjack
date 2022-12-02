@@ -17,12 +17,12 @@ const GameWindow = (props) => {
     const [usedCards, setUsedCards] = useState([]);
     const [generatedCard, setGeneratedCard] = useState([]);
 
-    
+    let run = true;
 
     const startCardGenerator = () => {
-        while (true){
-            console.log(usedCards)
-            if (usedCards.length < 2) {
+        
+        while (run){
+            if (usedCards.length <= 2) {
                 let randomNum = Math.floor(Math.random() * (53 - 1) + 1)
                 let chooseCard = Deck.find(card => {
                     return card.number === randomNum;
@@ -39,10 +39,10 @@ const GameWindow = (props) => {
                         ];
 
                     setPlayerCards(playerCards.concat(playerGeneratedCard));
-                    console.log("benjito")
                 }
             }else{
-            break;
+                console.log("hier");
+                run = false
             }
         }
     }
@@ -52,10 +52,6 @@ const GameWindow = (props) => {
         setUsedCards(usedCards.concat(playerCards));
         console.log(usedCards)
     }, [playerCards])
-
-    const randomCardGenerator = () => {
-
-    }
 
     const joinCardButtonClicked = () => {
         setPlayerCreateWindow(!playerCreateWindow)
